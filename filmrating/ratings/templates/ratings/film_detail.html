@@ -1,0 +1,33 @@
+<!-- ratings/templates/ratings/film_detail.html -->
+{% extends 'ratings/base.html' %}
+
+{% block content %}
+<h2 class="my-4">{{ film.title }}</h2>
+<p>{{ film.description }}</p>
+<p><strong>Release Date:</strong> {{ film.release_date }}</p>
+
+<h3 class="my-4">Ratings</h3>
+<div class="list-group mb-4">
+    {% for rating in film.rating_set.all %}
+    <div class="list-group-item">
+        <h5 class="mb-1">{{ rating.user.username }}</h5>
+        <p class="mb-1">Score: {{ rating.score }}</p>
+        <small>{{ rating.review }}</small>
+    </div>
+    {% endfor %}
+</div>
+
+{% if user.is_authenticated %}
+<h3 class="my-4">Add a Rating</h3>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.as_p }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Rating</button>
+</form>
+{% else %}
+<p>You must be <a href="{% url 'login' %}">logged in</a> to add a rating.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,13 @@
+<!-- ratings/templates/ratings/login.html -->
+{% extends 'ratings/base.html' %}
+
+{% block content %}
+<h2 class="my-4">Login</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.as_p }}
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+{% endblock %}

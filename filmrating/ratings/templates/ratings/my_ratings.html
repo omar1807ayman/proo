@@ -1,0 +1,15 @@
+<!-- ratings/templates/ratings/my_ratings.html -->
+{% extends 'ratings/base.html' %}
+
+{% block content %}
+<h2 class="my-4">My Ratings</h2>
+<div class="list-group">
+    {% for rating in ratings %}
+    <div class="list-group-item">
+        <h5 class="mb-1">{{ rating.film.title }}</h5>
+        <p class="mb-1">Score: {{ rating.score }}</p>
+        <small>{{ rating.review }}</small>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

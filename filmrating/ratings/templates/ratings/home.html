@@ -1,0 +1,12 @@
+<!-- ratings/templates/ratings/home.html -->
+{% extends 'ratings/base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Film Rating</h1>
+    <p class="lead">Rate your favorite films and see what others think!</p>
+    <hr class="my-4">
+    <p>Explore our collection and share your opinions.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'film_list' %}" role="button">View Films</a>
+</div>
+{% endblock %}

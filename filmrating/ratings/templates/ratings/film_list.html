@@ -1,0 +1,26 @@
+<!-- ratings/templates/ratings/film_list.html -->
+{% extends 'ratings/base.html' %}
+
+{% block content %}
+<h2 class="my-4">Films</h2>
+<div class="list-group">
+    {% for film in films %}
+    <a href="{% url 'film_detail' film.id %}" class="list-group-item list-group-item-action">
+        <div class="row">
+            <div class="col-md-3">
+                {% if film.image %}
+                <img src="{{ film.image.url }}" class="img-fluid" alt="{{ film.title }}">
+                {% else %}
+                <img src="https://via.placeholder.com/150" class="img-fluid" alt="No image available">
+                {% endif %}
+            </div>
+            <div class="col-md-9">
+                <h5 class="mb-1">{{ film.title }}</h5>
+                <p class="mb-1">{{ film.description|truncatewords:20 }}</p>
+                <small>Release Date: {{ film.release_date }}</small>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}
